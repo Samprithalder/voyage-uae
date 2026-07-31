@@ -23,24 +23,25 @@ import {
   type Interest,
 } from "../script";
 import "../styles.css";
+import { getImageUrl } from "../imageLoader";
 
 type LandmarkTab = "all" | "culture" | "nature" | "modern";
 
 const landmarkCards = [
   {
-    image: "/manus-storage/voyage-uae-abu-dhabi_b7f911f5.jpg",
+    image: "/manus-storage/voyage-uae-landmark-placeholder_62ac50be.jpg",
     name: "Louvre Abu Dhabi",
     emirate: "Abu Dhabi",
     groups: ["all", "culture", "modern"],
   },
   {
-    image: "/manus-storage/voyage-uae-al-fahidi_19dc46cd.jpg",
+    image: "/manus-storage/voyage-uae-landmark-placeholder_62ac50be.jpg",
     name: "Al Fahidi",
     emirate: "Dubai",
     groups: ["all", "culture"],
   },
   {
-    image: "/manus-storage/voyage-uae-jebel-jais_7ab5dcdb.jpg",
+    image: "/manus-storage/voyage-uae-landmark-placeholder_62ac50be.jpg",
     name: "Jebel Jais",
     emirate: "Ras Al Khaimah",
     groups: ["all", "nature"],
@@ -113,7 +114,10 @@ export default function Home() {
           <a className="brand-lockup" href="#home" aria-label="Voyage UAE home">
             <img
               className="brand-mark"
-              src="/manus-storage/voyage-uae-compass_92ac9716.png"
+              src="/manus-storage/voyage-uae-logo_8262b330.png"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = getImageUrl("/manus-storage/voyage-uae-logo_8262b330.png");
+              }}
               alt=""
             />
             <span className="brand-copy">
@@ -133,7 +137,10 @@ export default function Home() {
         <section className="hero" id="home">
           <img
             className="hero-media"
-            src="/manus-storage/voyage-uae-hero_13265b8e.jpg"
+            src="/manus-storage/voyage-uae-hero-placeholder_7bdb7c31.jpg"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = getImageUrl("/manus-storage/voyage-uae-hero-placeholder_7bdb7c31.jpg");
+            }}
             alt="Desert dunes, modern UAE architecture, city skyline, and distant mountains"
           />
           <div className="hero-overlay" />
@@ -249,7 +256,14 @@ export default function Home() {
                 {visibleLandmarks.map((landmark, index) => (
                   <article className="landmark-card" key={landmark.name}>
                     <span className="image-ordinal">Route stop {String(index + 1).padStart(2, "0")}</span>
-                    <img className="landmark-image" src={landmark.image} alt={landmark.name} />
+                    <img
+                      className="landmark-image"
+                      src={landmark.image}
+                      alt={landmark.name}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = getImageUrl(landmark.image);
+                      }}
+                    />
                     <div className="landmark-caption">
                       <span className="tiny-note">{landmark.emirate}</span>
                       <strong>{landmark.name}</strong>
@@ -426,7 +440,10 @@ export default function Home() {
             </div>
             <img
               className="closing-mark"
-              src="/manus-storage/voyage-uae-compass_92ac9716.png"
+              src="/manus-storage/voyage-uae-logo_8262b330.png"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = getImageUrl("/manus-storage/voyage-uae-logo_8262b330.png");
+              }}
               alt=""
             />
           </div>
