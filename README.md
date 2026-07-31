@@ -41,7 +41,7 @@ Before you begin, ensure you have the following installed on your computer:
 
    If you have the project as a ZIP file, extract it to a folder on your computer. If you have access to the Git repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Samprithalder/voyage-uae
    cd voyage-uae
    ```
 
