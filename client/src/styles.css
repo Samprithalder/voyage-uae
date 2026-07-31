@@ -15,6 +15,7 @@
   --voyage-line: rgba(6, 78, 59, 0.16);
   --voyage-shadow: 0 18px 45px rgba(5, 55, 43, 0.12);
   --voyage-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --voyage-glow: #d4af8f;
 }
 
 html {
@@ -523,16 +524,20 @@ select {
   position: absolute;
   inset: -1px;
   z-index: 0;
-  background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(248, 231, 201, 0.67), transparent 42%);
+  border: 2px solid var(--voyage-glow);
+  border-radius: 16px;
+  background: transparent;
   content: "";
   opacity: 0;
-  transition: opacity 220ms var(--voyage-ease-out);
+  box-shadow: 0 0 16px rgba(212, 175, 143, 0.5), inset 0 0 16px rgba(212, 175, 143, 0.2);
+  transition: opacity 220ms var(--voyage-ease-out), box-shadow 220ms var(--voyage-ease-out);
   pointer-events: none;
 }
 
 .spotlight-card:hover::before,
 .content-card:hover::before {
   opacity: 1;
+  box-shadow: 0 0 24px rgba(212, 175, 143, 0.7), inset 0 0 16px rgba(212, 175, 143, 0.3);
 }
 
 .spotlight-card > *,
@@ -579,9 +584,15 @@ select {
 .ai-point {
   border: 1px solid rgba(6, 78, 59, 0.14);
   border-radius: 14px;
-  background: rgba(255, 253, 247, 0.72);
+  background: rgba(255, 252, 248, 0.75);
   padding: 20px 20px 19px;
   box-shadow: 0 8px 20px rgba(6, 78, 59, 0.045);
+  transition: border-color 220ms var(--voyage-ease-out), box-shadow 220ms var(--voyage-ease-out);
+}
+
+.ai-point:hover {
+  border-color: var(--voyage-glow);
+  box-shadow: 0 8px 20px rgba(6, 78, 59, 0.045), 0 0 12px rgba(212, 175, 143, 0.4);
 }
 
 .ai-point strong,
@@ -631,7 +642,8 @@ select {
 }
 
 .tab-button:hover {
-  transform: translateY(-2px);
+  border-color: var(--voyage-glow);
+  box-shadow: 0 0 12px rgba(212, 175, 143, 0.5), inset 0 0 12px rgba(212, 175, 143, 0.1);
 }
 
 .landmark-grid {
@@ -641,10 +653,10 @@ select {
 }
 
 .landmark-card {
-  background: #fffdf8;
+  background: #fffcf8;
   box-shadow: 0 11px 25px rgba(6, 78, 59, 0.09);
-  transform: perspective(900px) rotateX(0) rotateY(0) translateY(0);
-  transition: transform 220ms var(--voyage-ease-out), box-shadow 220ms var(--voyage-ease-out);
+  border: 1px solid rgba(6, 78, 59, 0.16);
+  transition: border-color 220ms var(--voyage-ease-out), box-shadow 220ms var(--voyage-ease-out);
 }
 
 .landmark-card:first-child {
@@ -654,8 +666,8 @@ select {
 }
 
 .landmark-card:hover {
-  box-shadow: 0 19px 38px rgba(6, 78, 59, 0.16);
-  transform: perspective(900px) rotateX(2.2deg) rotateY(-2.2deg) translateY(-5px);
+  border-color: var(--voyage-glow);
+  box-shadow: 0 11px 25px rgba(6, 78, 59, 0.09), 0 0 20px rgba(212, 175, 143, 0.6);
 }
 
 .landmark-image {
@@ -732,9 +744,16 @@ select {
 .problem-card,
 .solution-card {
   position: relative;
-  border-top: 2px solid var(--voyage-emerald);
-  background: rgba(255, 253, 247, 0.82);
+  border: 1px solid rgba(6, 78, 59, 0.16);
+  background: rgba(255, 252, 248, 0.85);
   padding: 24px 22px;
+  transition: border-color 220ms var(--voyage-ease-out), box-shadow 220ms var(--voyage-ease-out);
+}
+
+.problem-card:hover,
+.solution-card:hover {
+  border-color: var(--voyage-glow);
+  box-shadow: 0 0 16px rgba(212, 175, 143, 0.5);
 }
 
 .problem-card::after,
@@ -858,15 +877,21 @@ select {
   border: 1px solid rgba(248, 231, 201, 0.36);
   border-radius: 9px;
   background: rgba(248, 231, 201, 0.09) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' viewBox='0 0 24 24' stroke='%23F8E7C9' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 13px center;
-  color: #fffaf0;
+  color: #fffdf5;
   padding: 12px 39px 12px 12px;
   font-size: 0.83rem;
   font-weight: 700;
+  transition: border-color 220ms var(--voyage-ease-out), box-shadow 220ms var(--voyage-ease-out);
+}
+
+.select-control:hover {
+  border-color: var(--voyage-glow);
+  box-shadow: 0 0 12px rgba(212, 175, 143, 0.4);
 }
 
 .select-control option {
   background: var(--voyage-deep);
-  color: #fffaf0;
+  color: #fffdf5;
 }
 
 .itinerary-form .specular-button {
@@ -875,7 +900,7 @@ select {
 }
 
 .itinerary-result {
-  background: rgba(255, 253, 247, 0.98);
+  background: rgba(255, 252, 248, 0.98);
   padding: 31px;
 }
 
@@ -909,8 +934,14 @@ select {
   gap: 11px;
   border: 1px solid rgba(6, 78, 59, 0.12);
   border-radius: 10px;
-  background: #f8f3ea;
+  background: #fffcf8;
   padding: 12px;
+  transition: border-color 220ms var(--voyage-ease-out), box-shadow 220ms var(--voyage-ease-out);
+}
+
+.itinerary-stop:hover {
+  border-color: var(--voyage-glow);
+  box-shadow: 0 0 12px rgba(212, 175, 143, 0.4);
 }
 
 .stop-time {
@@ -943,8 +974,14 @@ select {
 
 .impact-card {
   min-height: 216px;
-  background: rgba(255, 253, 247, 0.78);
+  background: rgba(255, 252, 248, 0.82);
   padding: 25px 22px;
+  transition: border-color 220ms var(--voyage-ease-out), box-shadow 220ms var(--voyage-ease-out);
+}
+
+.impact-card:hover {
+  border-color: var(--voyage-glow);
+  box-shadow: 0 0 16px rgba(212, 175, 143, 0.5);
 }
 
 .impact-card::after {
