@@ -29,7 +29,7 @@ type LandmarkTab = "all" | "culture" | "nature" | "modern";
 
 const landmarkCards = [
   {
-    image: "/manus-storage/voyage-uae-landmark-placeholder_62ac50be.jpg",
+    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fa.travel-assets.com%2Ffindyours-php%2Fviewfinder%2Fimages%2Fres70%2F489000%2F489049-louvre-abu-dhabi.jpg&f=1&nofb=1&ipt=2a1c9b0d8577a9b7abf653e0f400adbdbdc67f20e9b7e422db6ffec4d90a48bd",
     name: "Louvre Abu Dhabi",
     emirate: "Abu Dhabi",
     groups: ["all", "culture", "modern"],
