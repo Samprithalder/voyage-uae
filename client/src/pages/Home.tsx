@@ -146,7 +146,7 @@ export default function Home() {
           <div className="hero-overlay" />
           <div className="shell hero-inner">
             <div className="hero-content">
-              <span className="eyebrow">Grade 9 Artificial Intelligence Project</span>
+              <span className="eyebrow">AI Tourism Assistant</span>
               <h1>
                 Voyage <span>UAE</span>
               </h1>
@@ -178,15 +178,15 @@ export default function Home() {
               <dl className="student-list">
                 <div>
                   <dt>Student name</dt>
-                  <dd>Enter name</dd>
+                  <dd>Samprit Halder</dd>
                 </div>
                 <div>
                   <dt>Grade &amp; section</dt>
-                  <dd>Grade 9 — Enter section</dd>
+                  <dd>Grade 9 - C</dd>
                 </div>
                 <div>
                   <dt>Roll number</dt>
-                  <dd>Enter number</dd>
+                  <dd>23</dd>
                 </div>
               </dl>
             </aside>
@@ -206,24 +206,23 @@ export default function Home() {
               </div>
               <div className="overview-layout">
                 <article className="spotlight-card" onMouseMove={setSpotlightPosition}>
-                  <span className="route-kicker">Plain-language explanation</span>
                   <h3>A travel guide for the small things that matter.</h3>
                   <p>
-                    It does not replace a guide or a good plan. It gives visitors useful information in a clear, quick way when they are finding their bearings.
+                    It does not replace a guide or a good plan. It gives visitors useful information in a clear, quick way when they are finding their way.
                   </p>
                 </article>
                 <div className="ai-points">
                   <article className="ai-point">
-                    <strong>Language Translation</strong>
-                    <p>Translates signs and guide text into different languages.</p>
+                    <strong>Locations</strong>
+                    <p>Displays famous locations in UAE.</p>
                   </article>
                   <article className="ai-point">
                     <strong>Location Suggestions</strong>
                     <p>Recommends nearby places based on what a visitor likes to see.</p>
                   </article>
                   <article className="ai-point">
-                    <strong>Photo Identification</strong>
-                    <p>Recognizes famous landmarks when a visitor takes a picture.</p>
+                    <strong>UAE Vision</strong>
+                    <p>Uses sustainable development goals and UAE values.</p>
                   </article>
                 </div>
               </div>
