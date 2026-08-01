@@ -29,19 +29,19 @@ type LandmarkTab = "all" | "culture" | "nature" | "modern";
 
 const landmarkCards = [
   {
-    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fa.travel-assets.com%2Ffindyours-php%2Fviewfinder%2Fimages%2Fres70%2F489000%2F489049-louvre-abu-dhabi.jpg&f=1&nofb=1&ipt=2a1c9b0d8577a9b7abf653e0f400adbdbdc67f20e9b7e422db6ffec4d90a48bd",
+    image: "https://images.trvl-media.com/place/553248621560904133/0b49858a-e085-449c-bd25-6d8fab79e2d8.jpg",
     name: "Louvre Abu Dhabi",
     emirate: "Abu Dhabi",
     groups: ["all", "culture", "modern"],
   },
   {
-    image: "/manus-storage/voyage-uae-landmark-placeholder_62ac50be.jpg",
+    image: "https://media.cntraveler.com/photos/5a8481fd86e4b63c297d4817/16:9/w_2560,c_limit/Al-Fahedi-Fort__2018_GettyImages-545622825.jpg",
     name: "Al Fahidi",
     emirate: "Dubai",
     groups: ["all", "culture"],
   },
   {
-    image: "/manus-storage/voyage-uae-landmark-placeholder_62ac50be.jpg",
+    image: "https://b2352426.smushcdn.com/2352426/wp-content/uploads/2021/12/jebel-jais.jpg?lossy=2&strip=1&webp=1",
     name: "Jebel Jais",
     emirate: "Ras Al Khaimah",
     groups: ["all", "nature"],
