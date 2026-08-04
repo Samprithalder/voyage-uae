@@ -35,7 +35,7 @@ select {
 
 .voyage-page {
   min-height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; Removed to fix sticky header */
   background:
     radial-gradient(circle at 100% 11%, rgba(248, 231, 201, 0.9), transparent 22rem),
     linear-gradient(180deg, #f8f3ea 0%, #f4efe5 57%, #ece1cf 100%);
@@ -261,57 +261,7 @@ select {
   gap: 11px;
 }
 
-.specular-button {
-  --magnet-x: 0px;
-  --magnet-y: 0px;
-  position: relative;
-  display: inline-flex;
-  min-height: 48px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  overflow: hidden;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  background: var(--voyage-champagne);
-  color: var(--voyage-emerald);
-  padding: 0 20px;
-  font-size: 0.8rem;
-  font-weight: 900;
-  text-decoration: none;
-  transform: translate(var(--magnet-x), var(--magnet-y));
-  transition: transform 170ms var(--voyage-ease-out), box-shadow 170ms var(--voyage-ease-out), background 170ms var(--voyage-ease-out);
-}
-
-.specular-button::before {
-  position: absolute;
-  top: -55%;
-  left: -130%;
-  width: 57%;
-  height: 220%;
-  background: rgba(255, 255, 255, 0.72);
-  content: "";
-  transform: rotate(24deg);
-  transition: left 550ms var(--voyage-ease-out);
-}
-
-.specular-button span,
-.specular-button svg {
-  position: relative;
-  z-index: 1;
-}
-
-.specular-button:hover {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
-}
-
-.specular-button:hover::before {
-  left: 150%;
-}
-
-.specular-button:active {
-  transform: translate(var(--magnet-x), var(--magnet-y)) scale(0.97);
-}
+/* Specular button styles now handled by component */
 
 .specular-button:focus-visible,
 .tab-button:focus-visible,

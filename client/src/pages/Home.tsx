@@ -24,27 +24,41 @@ import {
 } from "../script";
 import "../styles.css";
 import { getImageUrl } from "../imageLoader";
+import BorderGlow from "../components/ui/BorderGlow";
+import SpecularButton from "../components/ui/SpecularButton";
 
 type LandmarkTab = "all" | "culture" | "nature" | "modern";
 
 const landmarkCards = [
   {
-    image: "https://images.trvl-media.com/place/553248621560904133/0b49858a-e085-449c-bd25-6d8fab79e2d8.jpg",
+    image: "/assets/louvre-abu-dhabi.jpg",
     name: "Louvre Abu Dhabi",
     emirate: "Abu Dhabi",
     groups: ["all", "culture", "modern"],
   },
   {
-    image: "https://media.cntraveler.com/photos/5a8481fd86e4b63c297d4817/16:9/w_2560,c_limit/Al-Fahedi-Fort__2018_GettyImages-545622825.jpg",
+    image: "/assets/al-fahidi.jpg",
     name: "Al Fahidi",
     emirate: "Dubai",
     groups: ["all", "culture"],
   },
   {
-    image: "https://b2352426.smushcdn.com/2352426/wp-content/uploads/2021/12/jebel-jais.jpg?lossy=2&strip=1&webp=1",
+    image: "/assets/jebel-jais.jpg",
     name: "Jebel Jais",
     emirate: "Ras Al Khaimah",
     groups: ["all", "nature"],
+  },
+  {
+    image: "/assets/burj-khalifa.jpg",
+    name: "Burj Khalifa",
+    emirate: "Dubai",
+    groups: ["all", "modern"],
+  },
+  {
+    image: "/assets/grand-mosque.jpg",
+    name: "Sheikh Zayed Grand Mosque",
+    emirate: "Abu Dhabi",
+    groups: ["all", "culture"],
   },
 ];
 
@@ -111,7 +125,7 @@ export default function Home() {
     <div className="voyage-page">
       <header className="topbar">
         <div className="shell topbar-inner">
-          <a className="brand-lockup" href="#home" aria-label="Voyage UAE home">
+          <a className="brand-lockup" href="#home" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} aria-label="Voyage UAE home">
             <img
               className="brand-mark"
               src="/manus-storage/voyage-uae-logo_8262b330.png"
@@ -154,16 +168,17 @@ export default function Home() {
                 Explore landmarks, culture, and nature across all seven Emirates.
               </p>
               <div className="hero-actions">
-                <button
-                  className="specular-button"
-                  type="button"
+                <SpecularButton
                   onClick={scrollToPlan}
-                  onMouseMove={setMagnetPosition}
-                  onMouseLeave={resetMagnetPosition}
+                  size="lg"
+                  baseColor="#064E3B"
+                  lineColor="#F8E7C9"
+                  textColor="#F8E7C9"
+                  radius={999}
                 >
-                  <span>Start Exploring</span>
-                  <ArrowDownRight size={17} strokeWidth={2.2} aria-hidden="true" />
-                </button>
+                  Start Exploring
+                  <ArrowDownRight size={17} strokeWidth={2.2} className="ml-2 inline-block" />
+                </SpecularButton>
               </div>
               <div className="hero-badges" aria-label="Project tags">
                 <span className="tag-badge">#Travel</span>
@@ -205,25 +220,41 @@ export default function Home() {
                 </p>
               </div>
               <div className="overview-layout">
-                <article className="spotlight-card" onMouseMove={setSpotlightPosition}>
-                  <h3>A travel guide for the small things that matter.</h3>
-                  <p>
-                    It does not replace a guide or a good plan. It gives visitors useful information in a clear, quick way when they are finding their way.
-                  </p>
-                </article>
+                <BorderGlow
+                  className="spotlight-card-glow"
+                  backgroundColor="#064E3B"
+                  glowColor="40 80 80"
+                  colors={["#F8E7C9", "#d4af8f", "#064E3B"]}
+                  borderRadius={16}
+                >
+                  <div className="p-8">
+                    <span className="route-kicker text-[#F8E7C9]">Plain-language explanation</span>
+                    <h3 className="text-[#F8E7C9] text-3xl font-serif mt-2 mb-4">A travel guide for the small things that matter.</h3>
+                    <p className="text-[#F8E7C9]/80 leading-relaxed">
+                      It does not replace a guide or a good plan. It gives visitors useful information in a clear, quick way when they are finding their bearings.
+                    </p>
+                  </div>
+                </BorderGlow>
                 <div className="ai-points">
-                  <article className="ai-point">
-                    <strong>Locations</strong>
-                    <p>Displays famous locations in UAE.</p>
-                  </article>
-                  <article className="ai-point">
-                    <strong>Location Suggestions</strong>
-                    <p>Recommends nearby places based on what a visitor likes to see.</p>
-                  </article>
-                  <article className="ai-point">
-                    <strong>UAE Vision</strong>
-                    <p>Uses sustainable development goals and UAE values.</p>
-                  </article>
+                  {["Language Translation", "Location Suggestions", "Photo Identification"].map((title, i) => (
+                    <BorderGlow
+                      key={title}
+                      className="ai-point-glow"
+                      backgroundColor="rgba(255, 252, 248, 0.75)"
+                      glowColor="40 80 80"
+                      colors={["#d4af8f", "#064E3B", "#F8E7C9"]}
+                      borderRadius={14}
+                    >
+                      <div className="p-5">
+                        <strong className="block text-[#064E3B] font-black">{title}</strong>
+                        <p className="text-[#60736b] text-sm mt-2">
+                          {i === 0 && "Translates signs and guide text into different languages."}
+                          {i === 1 && "Recommends nearby places based on what a visitor likes to see."}
+                          {i === 2 && "Recognizes famous landmarks when a visitor takes a picture."}
+                        </p>
+                      </div>
+                    </BorderGlow>
+                  ))}
                 </div>
               </div>
             </div>
@@ -253,21 +284,30 @@ export default function Home() {
               </div>
               <div className="landmark-grid" role="tabpanel">
                 {visibleLandmarks.map((landmark, index) => (
-                  <article className="landmark-card" key={landmark.name}>
-                    <span className="image-ordinal">Route stop {String(index + 1).padStart(2, "0")}</span>
-                    <img
-                      className="landmark-image"
-                      src={landmark.image}
-                      alt={landmark.name}
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = getImageUrl(landmark.image);
-                      }}
-                    />
-                    <div className="landmark-caption">
-                      <span className="tiny-note">{landmark.emirate}</span>
-                      <strong>{landmark.name}</strong>
-                    </div>
-                  </article>
+                  <BorderGlow
+                    key={landmark.name}
+                    className="landmark-card-glow"
+                    backgroundColor="#fffcf8"
+                    glowColor="40 80 80"
+                    colors={["#d4af8f", "#064E3B", "#F8E7C9"]}
+                    borderRadius={16}
+                  >
+                    <article className="landmark-card h-full border-0 shadow-none">
+                      <span className="image-ordinal">Route stop {String(index + 1).padStart(2, "0")}</span>
+                      <img
+                        className="landmark-image"
+                        src={landmark.image}
+                        alt={landmark.name}
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = getImageUrl(landmark.image);
+                        }}
+                      />
+                      <div className="landmark-caption">
+                        <span className="tiny-note">{landmark.emirate}</span>
+                        <strong>{landmark.name}</strong>
+                      </div>
+                    </article>
+                  </BorderGlow>
                 ))}
               </div>
             </div>
@@ -281,21 +321,26 @@ export default function Home() {
                 <h2>A visitor should spend the day seeing places, not searching for the way.</h2>
               </div>
               <div className="problem-grid">
-                <article className="content-card problem-card" data-note="Travel note" onMouseMove={setSpotlightPosition}>
-                  <span className="problem-number">01</span>
-                  <h3>Unfamiliar transit routes</h3>
-                  <p>Getting confused by unfamiliar transit routes can take time away from sightseeing.</p>
-                </article>
-                <article className="content-card problem-card" data-note="Travel note" onMouseMove={setSpotlightPosition}>
-                  <span className="problem-number">02</span>
-                  <h3>Busy attractions</h3>
-                  <p>Long lines during busy hours can make popular places less enjoyable for visitors.</p>
-                </article>
-                <article className="content-card problem-card" data-note="Travel note" onMouseMove={setSpotlightPosition}>
-                  <span className="problem-number">03</span>
-                  <h3>Hidden cultural places</h3>
-                  <p>Historic cultural spots outside the main city hubs can be easy to miss without a guide.</p>
-                </article>
+                {[
+                  { num: "01", title: "Unfamiliar transit routes", desc: "Getting confused by unfamiliar transit routes can take time away from sightseeing." },
+                  { num: "02", title: "Busy attractions", desc: "Long lines during busy hours can make popular places less enjoyable for visitors." },
+                  { num: "03", title: "Hidden cultural places", desc: "Historic cultural spots outside the main city hubs can be easy to miss without a guide." }
+                ].map((item) => (
+                  <BorderGlow
+                    key={item.num}
+                    className="problem-card-glow"
+                    backgroundColor="rgba(255, 252, 248, 0.85)"
+                    glowColor="40 80 80"
+                    colors={["#d4af8f", "#064E3B", "#F8E7C9"]}
+                    borderRadius={16}
+                  >
+                    <article className="content-card problem-card border-0 shadow-none h-full">
+                      <span className="problem-number">{item.num}</span>
+                      <h3>{item.title}</h3>
+                      <p>{item.desc}</p>
+                    </article>
+                  </BorderGlow>
+                ))}
               </div>
             </div>
           </section>
@@ -365,16 +410,18 @@ export default function Home() {
                           ))}
                         </select>
                       </label>
-                      <button
-                        className="specular-button"
-                        type="button"
+                      <SpecularButton
                         onClick={makeItinerary}
-                        onMouseMove={setMagnetPosition}
-                        onMouseLeave={resetMagnetPosition}
+                        size="md"
+                        baseColor="#064E3B"
+                        lineColor="#F8E7C9"
+                        textColor="#F8E7C9"
+                        radius={999}
+                        className="w-full mt-4"
                       >
-                        <span>Generate Itinerary</span>
-                        <ArrowRight size={16} strokeWidth={2.2} aria-hidden="true" />
-                      </button>
+                        Generate Itinerary
+                        <ArrowRight size={16} strokeWidth={2.2} className="ml-2 inline-block" />
+                      </SpecularButton>
                     </div>
                   </div>
 
@@ -408,21 +455,26 @@ export default function Home() {
                 <h2>Good journeys help visitors understand the country with care.</h2>
               </div>
               <div className="impact-grid">
-                <article className="impact-card">
-                  <span className="impact-symbol"><Leaf size={18} strokeWidth={1.8} aria-hidden="true" /></span>
-                  <h3>Responsible travel</h3>
-                  <p>Encourages visitors to choose thoughtful routes and appreciate natural and cultural places with care.</p>
-                </article>
-                <article className="impact-card">
-                  <span className="impact-symbol"><MapPinned size={18} strokeWidth={1.8} aria-hidden="true" /></span>
-                  <h3>Local culture</h3>
-                  <p>Helps tourists learn about traditional UAE culture and history beyond the main city attractions.</p>
-                </article>
-                <article className="impact-card">
-                  <span className="impact-symbol"><Compass size={18} strokeWidth={1.8} aria-hidden="true" /></span>
-                  <h3>Smart services</h3>
-                  <p>Supports the national goal of building smart digital services for Vision 2071.</p>
-                </article>
+                {[
+                  { icon: <Leaf size={18} strokeWidth={1.8} />, title: "Responsible travel", desc: "Encourages visitors to choose thoughtful routes and appreciate natural and cultural places with care." },
+                  { icon: <MapPinned size={18} strokeWidth={1.8} />, title: "Local culture", desc: "Helps tourists learn about traditional UAE culture and history beyond the main city attractions." },
+                  { icon: <Compass size={18} strokeWidth={1.8} />, title: "Smart services", desc: "Supports the national goal of building smart digital services for Vision 2071." }
+                ].map((item, i) => (
+                  <BorderGlow
+                    key={i}
+                    className="impact-card-glow"
+                    backgroundColor="rgba(255, 252, 248, 0.85)"
+                    glowColor="40 80 80"
+                    colors={["#d4af8f", "#064E3B", "#F8E7C9"]}
+                    borderRadius={16}
+                  >
+                    <article className="impact-card border-0 shadow-none h-full">
+                      <span className="impact-symbol">{item.icon}</span>
+                      <h3>{item.title}</h3>
+                      <p>{item.desc}</p>
+                    </article>
+                  </BorderGlow>
+                ))}
               </div>
             </div>
           </section>
