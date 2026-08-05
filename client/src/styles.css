@@ -121,8 +121,8 @@ select {
 
 .main-nav a {
   position: relative;
-  color: rgba(248, 231, 201, 0.78);
-  font-size: 0.79rem;
+  color: #f8e7c9;
+  font-size: 0.85rem;
   font-weight: 700;
   text-decoration: none;
   transition: color 170ms var(--voyage-ease-out);
@@ -248,9 +248,10 @@ select {
 .hero-tagline {
   max-width: 510px;
   margin: 29px 0 30px;
-  color: rgba(255, 250, 240, 0.92);
-  font-size: 1.1rem;
-  line-height: 1.72;
+  color: #fffaf0;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  font-weight: 500;
 }
 
 .hero-actions,
@@ -325,7 +326,7 @@ select {
 .student-list dd {
   margin: 0;
   color: #fffaf0;
-  font-size: 0.81rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
@@ -447,9 +448,10 @@ select {
 .section-heading p {
   max-width: 590px;
   margin: 17px 0 0;
-  color: var(--voyage-muted);
-  font-size: 0.99rem;
-  line-height: 1.75;
+  color: #4a5a52;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  font-weight: 500;
 }
 
 .overview-layout {
@@ -517,9 +519,10 @@ select {
 .spotlight-card p {
   max-width: 450px;
   margin: 0;
-  color: rgba(255, 250, 240, 0.88);
-  font-size: 0.93rem;
-  line-height: 1.74;
+  color: #fffaf0;
+  font-size: 1rem;
+  line-height: 1.8;
+  font-weight: 500;
 }
 
 .spotlight-card .route-kicker {
@@ -551,8 +554,9 @@ select {
 .impact-card h3 {
   display: block;
   color: var(--voyage-emerald);
-  font-size: 0.91rem;
+  font-size: 1rem;
   font-weight: 900;
+  line-height: 1.3;
 }
 
 .ai-point p,
@@ -560,9 +564,10 @@ select {
 .solution-card p,
 .impact-card p {
   margin: 7px 0 0;
-  color: var(--voyage-muted);
-  font-size: 0.84rem;
-  line-height: 1.62;
+  color: #4a5a52;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  font-weight: 500;
 }
 
 .topic-tabs {
@@ -579,7 +584,7 @@ select {
   background: transparent;
   padding: 10px 14px;
   color: var(--voyage-emerald);
-  font-size: 0.74rem;
+  font-size: 0.8rem;
   font-weight: 900;
   transition: color 180ms var(--voyage-ease-out), background 180ms var(--voyage-ease-out), transform 180ms var(--voyage-ease-out);
 }
@@ -667,7 +672,9 @@ select {
 }
 
 .landmark-caption span {
-  color: var(--voyage-muted);
+  color: #4a5a52;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 .landmark-caption strong {
@@ -675,9 +682,9 @@ select {
   margin-top: 5px;
   color: var(--voyage-emerald);
   font-family: "DM Serif Display", Georgia, serif;
-  font-size: 1.22rem;
-  font-weight: 400;
-  line-height: 1.02;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.1;
 }
 
 .problem-grid,

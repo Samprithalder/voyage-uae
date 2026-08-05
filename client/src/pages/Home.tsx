@@ -229,8 +229,8 @@ export default function Home() {
                 >
                   <div className="p-8">
                     <span className="route-kicker text-[#F8E7C9]">Plain-language explanation</span>
-                    <h3 className="text-[#F8E7C9] text-3xl font-serif mt-2 mb-4">A travel guide for the small things that matter.</h3>
-                    <p className="text-[#F8E7C9]/80 leading-relaxed">
+                    <h3 className="text-[#F8E7C9] text-4xl font-serif mt-2 mb-4 font-medium">A travel guide for the small things that matter.</h3>
+                    <p className="text-[#fffaf0] leading-relaxed text-base font-medium">
                       It does not replace a guide or a good plan. It gives visitors useful information in a clear, quick way when they are finding their bearings.
                     </p>
                   </div>
@@ -246,8 +246,8 @@ export default function Home() {
                       borderRadius={14}
                     >
                       <div className="p-5">
-                        <strong className="block text-[#064E3B] font-black">{title}</strong>
-                        <p className="text-[#60736b] text-sm mt-2">
+                        <strong className="block text-[#064E3B] font-black text-base">{title}</strong>
+                        <p className="text-[#4a5a52] text-sm mt-2 font-medium">
                           {i === 0 && "Translates signs and guide text into different languages."}
                           {i === 1 && "Recommends nearby places based on what a visitor likes to see."}
                           {i === 2 && "Recognizes famous landmarks when a visitor takes a picture."}
